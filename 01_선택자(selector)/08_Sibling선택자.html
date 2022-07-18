@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Sibling(+) 선택자 </title>
+<!-- jQuery library -->
+<script src="jquery-3.6.0.min.js"></script>
+</head>
+  
+<body>
+
+	<div id="container">
+
+		<nav>
+			<ul class="list">
+				<li id="first">One</li>
+				<li id="second">Two</li>
+				<li id="third">Three</li>
+			</ul>
+		</nav>
+
+	</div>
+
+	<!---------- jQuery code Start ---------->
+
+	<script>
+
+		// 선택된 요소를 기준으로 바로 뒤에 오는 첫번째 형제요소
+		$('li').on('click', function() {
+      // $('#first + li').css('background', 'yellow')
+      $('+li', this).css('background', 'yellow') // 선택자를 앞에다 쓴다...
+      $(this).next().css('background', 'yellow') //next()를 활용할 수 있다.
+      // js의 nextSibling()과 같다
+    })
+		
+	</script>
+	
+	
+	
+	
+
+</body>
+</html>
+

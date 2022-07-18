@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>기본문법2</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script> // 순서 중요!
+  // document.addEventListener('DOMContentLoaded', () => {}) 
+  // => $(document).ready(() => {})
+  $(() => { // 더 줄이면 이렇다.
+    $('div').on('click', () => {
+      $('div').css('background', 'yellow')
+    })
+    // const div = document.querySelector('div');
+    // div.addEventListener('click', () => {div.style.background = 'yellow'})
+  })
+  </script>
+  <script src="./common.js" defer></script> 
+  <!-- 외부 파일을 끌어올 때는 defer와 async 사용 가능 -->
+</head>
+
+<body>
+  <div></div>
+  <!-- <script src="./common.js"></script> -->
+</body>
+
+</html>

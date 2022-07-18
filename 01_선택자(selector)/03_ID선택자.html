@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> ID 선택자  </title>
+<!-- jQuery library -->
+<script src="jquery-3.6.0.min.js"></script>
+</head>
+  
+<body>
+
+	<div id="container">
+
+		<header>
+			<h2> Welcome mySite </h2>
+		</header>
+
+		<nav>
+			<ul class="list">
+				<li id="sub">One</li>
+				<li id="main">Two</li>
+				<li id="total">Three</li>
+			</ul>
+		</nav>
+
+	</div>
+
+	<!---------- jQuery code Start ---------->
+
+	<script>
+
+		// id 를 이용하여 선택
+    $('#sub').on('click', function() {
+      $('#total').css('background', 'pink')
+    })
+	
+/* const sub = document.getElementById('sub');
+const total = document.getElementById('total');
+  sub.addEventListener('click', () => {
+  total.style.background = 'pink';
+  })
+
+*/
+
+	</script>
+	
+	
+	
+	
+
+</body>
+</html>
+

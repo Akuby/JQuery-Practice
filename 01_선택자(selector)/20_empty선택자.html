@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> empty 선택자 </title>
+<!-- jQuery library -->
+<script src="jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+	<div id="container">
+		<ul class="nav1">
+			<li>apple</li>
+			<li>banana</li>
+			<li></li>
+		</ul>
+
+		<ul class="nav2">
+			<li></li>
+			<li>tiger</li>
+			<li></li>
+		</ul>
+	</div>
+
+	<!---------- jQuery code Start ---------->
+	<script>
+
+		// 요소에 텍스트가 없는 노드 (공백도 문자로 인식)
+    $('ul li:empty').css('background', 'pink') //자식이 없는 li
+    // $('ul li:not(:empty)').css('background', 'yellowgreen')
+    $('ul li:parent').css('background', 'yellowgreen') // 이렇게도 쓸 수 있다. 자식 노드가 무조건 있으므로.
+
+	</script>
+	
+	
+	
+	
+
+</body>
+</html>
