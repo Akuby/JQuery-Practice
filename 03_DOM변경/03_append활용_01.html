@@ -30,9 +30,23 @@
     $('#container').append('<img src="pic3.jpg" alt="" width="100">')
 
     // 첫번째 이미지를 마지막으로 이동
-    $('button').on('click', function() {
-      $('#container').append($('#container img:eq(0)'))
+    // $('button').on('click', function() {
+    //   $('#container').append($('#container img:eq(0)'))
+    // })
+
+    // in js
+    const btn = document.querySelector('button');
+    const container = document.getElementById('container');
+    // btn.addEventListener('click', () => {
+    //   container.append(container.firstChild) // firstChild는 노드요소 기준으로 추가한다. 그래서 줄바꿈 text노드가 찍히는 것.
+    //   console.log(container.firstChild)
+    // })
+    //피드백 받은 내용은,
+    btn.addEventListener('click', () => {
+      const firstChild = container.children[0]
+      container.append(firstChild)
     })
+    // 클릭했을 때, 태그요소 기준인 children 사용한 첫 번째 요소를, append 해준다.
   </script>
 
 

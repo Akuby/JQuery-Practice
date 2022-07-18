@@ -1,31 +1,42 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title> append()활용  </title>
-<!-- jQuery library -->
-<script src="../jquery-3.6.0.min.js"></script>
-<style>
-	div {border:1px  solid #00F;}
-</style>
+  <meta charset="utf-8">
+  <title> append()활용 </title>
+  <!-- jQuery library -->
+  <script src="../jquery-3.6.0.min.js"></script>
+  <style>
+    div {
+      border: 1px solid #00F;
+    }
+  </style>
 </head>
- 
+
 <body>
 
-	<button id ="append"  title="append">append</button>
+  <button id="append" title="append">append</button>
 
-	<div id="container"></div>
-	
-	
-	<!---------- jQuery code Start ---------->
-	<script>
-			  
-		// 버튼을 클릭할 때마다 div#container 내부에 pic1.jpg 추가하기
-		
-		
-		
+  <div id="container"></div>
 
-	</script>
+
+  <!---------- jQuery code Start ---------->
+  <script>
+    // 버튼을 클릭할 때마다 div#container 내부에 pic1.jpg 추가하기
+    let num = 1;
+    $('#append').on('click', function() {
+      
+      // 1. 랜덤 출력
+      // let num = Math.ceil(Math.random()*3);
+      // console.log(num)
+
+      // 2. 순차 출력
+      if (num === 4) num = 1;
+      $('#container').append(`<img src=./pic${num}.jpg width=100>`)
+      num++;
+    })
+  </script>
 
 </body>
+
 </html>
