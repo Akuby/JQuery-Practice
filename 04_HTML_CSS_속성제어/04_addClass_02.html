@@ -27,9 +27,18 @@
 
 		// 각 이미지를 클릭시 클래스 네임 type1, type2, type3 을 적용하시오
 		
+		$('img').on('click', function () {
+      $(this).addClass(`type${$(this).index()+1}`) // index()만 써주면 완성...?!
+    })
 		
 		
-		
+    // const imgs = document.querySelectorAll('img') 
+    // imgs.forEach((el, i) => {
+    //   el.addEventListener('click', (e) => {
+    //     e.currentTarget.classList.add(`type${i+1}`) 
+    //   })
+    // })
+
 
 	</script>
 	

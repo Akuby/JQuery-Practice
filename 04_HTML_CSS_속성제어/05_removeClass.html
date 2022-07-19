@@ -26,7 +26,10 @@
 	<script>
 	
 		// 선택한 태그의 모든 클래스 삭제
-		
+		$('img').on('click', function () {
+      // $('img').removeClass(); // 모든 img의 모든 클래스 삭제
+      $(this).removeClass() // 클릭된 img의 모든 클래스 삭제
+    })
 		
 		// 클래스 지정해서 삭제
 		

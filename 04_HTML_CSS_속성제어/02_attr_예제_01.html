@@ -18,6 +18,13 @@
 		
 		// a 태그에 제이쿼리 사이트로 링크를 걸고 target 속성도 추가하시오
 		
+    console.log($('div a').attr('href'))
+    // $('div a').attr('href', 'https://www.jquery.com').attr('target', '_blank')
+    $('div a').attr({
+      href: 'https://www.jquery.com',
+      target : '_blank'
+    })
+
 		
 	</script>
 	
