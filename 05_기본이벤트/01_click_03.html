@@ -41,9 +41,10 @@
     as.forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        img.setAttribute('src', e.currentTarget.href);
-        img.setAttribute('alt', e.currentTarget.innerText);
-        // js는 setAttribute 여러번 해줘야한다...
+        img.src = a.href;
+        img.alt = a.innerText;
+        // setAttribute 대신 바로 속성에 적어줄 수 있고,
+        // forEach가 각각의 요소를 집어주기 때문에 e.currentTarget도 필요없다.
       }
         )
       })
