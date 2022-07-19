@@ -27,7 +27,17 @@
 		
 		// 각 이미지 클릭시 클래스명을 랜던하게 추가하고
 		// 동시에 다른 이미지의 클래스명은 삭제하시오
-		
+		// $('img').on('click', function() {
+    //   $('img').removeClass(); // 모든 img에서 클래스를 삭제한 후
+    //   $(this).addClass(`type${Math.ceil(Math.random()*3)}`) // 클릭된 img에만 다시 클래스 부여
+    // })
+
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.currentTarget.classList.add(`type${Math.ceil(Math.random()*3)}`) // 다른 img 클래스는 어떻게 삭제하지?
+      })
+    });
 		
 		
 		

@@ -11,7 +11,6 @@
 	img.type1 { padding:5px; background: orange; }
 	img.type2 { padding:5px; background: blue; }
 	img.type3 { padding:5px; background: pink; }
-
 	img.type4 { padding:5px; background: purple; }  
 	img.type5 { padding:5px; background: yellow; }
 
@@ -27,7 +26,9 @@
 	<!---------- jQuery code Start ---------->
 
 	<script>
-
+    $('img').on('click', function() {
+      $(this).removeClass().addClass(`type${Math.ceil(Math.random()*5)}`)
+    })
 		// 각 이미지 클릭시 클래스명이 랜덤하게 추가하시오
 		
 		
