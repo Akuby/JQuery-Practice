@@ -28,13 +28,26 @@
     //   })
     // })
 
-    $('li').on('click', function (e) {
-      e.preventDefault();
-      $('img').attr({
-        src: `${$(this).children('a').attr('href')}`,
-        alt: `${$(this).children('a').text()}` //jquery에서는 innerText 필요없이 text만으로 가능
+    // $('li').on('click', function (e) {
+    //   e.preventDefault();
+    //   $('img').attr({
+    //     src: `${$(this).children('a').attr('href')}`,
+    //     alt: `${$(this).children('a').text()}` //jquery에서는 innerText 필요없이 text만으로 가능
+    //   })
+    // })
+
+    const as = document.querySelectorAll('li>a')
+    const img = document.querySelector('p>img')
+    as.forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        img.setAttribute('src', e.currentTarget.href);
+        img.setAttribute('alt', e.currentTarget.innerText);
+        // js는 setAttribute 여러번 해줘야한다...
+      }
+        )
       })
-    })
+
   </script>
 
 
