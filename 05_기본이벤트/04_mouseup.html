@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>mouseup()</title>
-<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<ul>
@@ -20,7 +20,14 @@
 
 		// 마우스를 클릭한상태를 해제했을 때 이미지가 바뀌도록
 		
-		
+		$('li').on('mouseup', function(){
+      $('img').attr({
+        src : $(this).children('a').attr('href'),
+        alt : $(this).children('a').text()
+      })
+    }).on('click', function(e){
+      e.preventDefault()
+    })
 		
 	</script>
 

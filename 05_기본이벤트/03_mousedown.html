@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>mousedown()</title>
-<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -21,7 +21,14 @@
 	<script type="text/javascript">
 
 		// 마우스다운시 이미지가 바뀌도록
-		
+		$('li').on('mousedown', function(){
+      $('img').attr({
+        src : $(this).children('a').attr('href'),
+        alt : $(this).children('a').text()
+      })
+    }).on('click', function(e){
+      e.preventDefault()
+    })
 		
 		
 	</script>
