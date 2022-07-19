@@ -35,7 +35,8 @@
     const imgs = document.querySelectorAll('img');
     imgs.forEach(el => {
       el.addEventListener('click', (e) => {
-        e.currentTarget.classList.add(`type${Math.ceil(Math.random()*3)}`) // 다른 img 클래스는 어떻게 삭제하지?
+        imgs.className = '';
+        e.currentTarget.className = `type${Math.ceil(Math.random()*3)}` // classList가 아닌 className으로 해결!!
       })
     });
 		
