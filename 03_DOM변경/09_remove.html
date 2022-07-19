@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title> remove  </title>
-<script src="jquery-1.7.2.min.js"></script>
+<script src="../jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
 
 	<!---------- jQuery code Start ---------->
 	<script>
-
+    // 추가 및 삭제할 때, 완전히 삭제 후 추가하는 것이 좋기 때문에 remove 사용
 		// remove()는 선택된 노드를 DOM에서 제거 ( 태그삭제)
-		
+		$('.container img:first').remove()
 		// 첫번째 이미지를 노드에서 제거하시오
 		
 		
