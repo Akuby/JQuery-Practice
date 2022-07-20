@@ -1,27 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>toggle()</title>
-<script src="jquery-1.7.2.min.js"></script>
+  <meta charset="utf-8">
+  <title>toggle()</title>
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="../jquery-migrate-1.4.1.min.js"></script>
 </head>
+
 <body>
 
-	<button>화면을 변경</button>
+  <button>화면을 변경</button>
 
-	<p><img src="flower.jpg" alt="꽃" /></p>
-	
-	
-	<!---------- jQuery code Start ---------->
-	<script type="text/javascript">
+  <p><img src="flower.jpg" alt="꽃" /></p>
 
-		// button을 클릭할때마다 바다, 해파리, 건물, 꽃 이미지를 순서대로 로드하시오
-		
-		
-		
-		
-		
-	</script>
+
+  <!---------- jQuery code Start ---------->
+  <script type="text/javascript">
+    // button을 클릭할때마다 바다, 해파리, 건물, 꽃 이미지를 순서대로 로드하시오
+    $('button').toggle(
+      function() {
+      $('p img').attr({
+        src : 'sea.jpg',
+        alt : '바다'
+      })
+    }, function() {
+      $('p img').attr({
+        src : 'jellyfish.jpg',
+        alt : '해파리'
+      })
+    }, function() {
+      $('p img').attr({
+        src : 'building.jpg',
+        alt : '건물'
+      })
+    }, function() {
+      $('p img').attr({
+        src : 'flower.jpg',
+        alt : '꽃'
+      })
+    })
+  </script>
 
 
 
@@ -29,4 +48,5 @@
 
 
 </body>
+
 </html>
