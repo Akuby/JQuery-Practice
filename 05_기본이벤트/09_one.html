@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>one()</title>
-<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -22,8 +22,14 @@
 		// one()은 이벤트 처리시 한번만 실행 
 		
 		// 리스트(a 태그) 클릭이벤트 한번만 적용되도록
-		
-			
+
+    $('li').one('click', function(e) { // 첫번째 클릭 시, 사진 바뀜. 그 후 클릭 시 a 작동
+      e.preventDefault();
+      $('img').attr({
+        src : $(this).children('a').attr('href'),
+        alt: $(this).children('a').text()
+      })
+    })
 			
 		
 	</script>

@@ -19,7 +19,12 @@
 		
 		// mousemove( )는 특정 태그 위에서 마우스 포인터가 움직이는 경우에 실행
 		// pageX, pageY, clientX,clientY, screenX, screenY, offsetX, offsetY: 웹브라우저에서 문서가 출력되는 영역에서의 XY좌표 값을 가짐
-		
+    $('img').on('mousemove', function(e) { // 마우스 좌표값은 이벤트 객체에 있다.
+      $('p:eq(0)').text(`pageX:${e.pageX}, pageY:${e.pageY}`) // 전체 문서 기준
+      $('p:eq(1)').text(`clientX:${e.clientX}, clientY:${e.clientY}`) // 현재 보이는 브라우저 창 ( 잘리면 잘린 대로 )
+      $('p:eq(2)').text(`screenX:${e.screenX}, screenY:${e.screenY}`) // 모니터 화면 전체 기준
+      $('p:eq(3)').text(`offsetX:${e.offsetX}, offsetY:${e.offsetY}`) // 이벤트 대상 영역 기준
+    })
 		// 마우스가 이미지 위에서 움직일 때 좌표값 출력하기
 		
 		

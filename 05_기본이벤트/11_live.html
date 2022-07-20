@@ -1,32 +1,49 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <title>live()</title>
-    <script src="jquery-1.7.2.min.js"></script>
+  <meta charset="utf-8">
+  <title>live()</title>
+  <script src="jquery-3.6.0.min.js"></script>
+  <!-- <script src="../jquery-migrate-1.4.1.min.js"></script> -->
 </head>
+
 <body>
 
-    <button>li 요소를 추가</button>
+  <button>li 요소를 추가</button>
 
-    <ul>
-        <li><a href="flower.jpg"> 꽃</a></li>
-        <li><a href="sea.jpg"> 바다</a></li>
-        <li><a href="jellyfish.jpg"> 해파리</a></li>
-    </ul>
+  <ul>
+    <li><a href="flower.jpg"> 꽃</a></li>
+    <li><a href="sea.jpg"> 바다</a></li>
+    <li><a href="jellyfish.jpg"> 해파리</a></li>
+  </ul>
 
-    <p><img src="flower.jpg" alt=" 꽃" /></p>
+  <p><img src="flower.jpg" alt=" 꽃" /></p>
 
-    <!---------- jQuery code Start ---------->
-    <script type="text/javascript">
+  <!---------- jQuery code Start ---------->
+  <script type="text/javascript">
+    // 버튼 클릭시 건물이미지 리스트를 추가하고, a 이벤트가 적용되도록
 
-        // 버튼 클릭시 건물이미지 리스트를 추가하고, a 이벤트가 적용되도록
+    // 최신버전에서 live()는 migrate 플러그인을 통해서만 사용 가능
+    
+    // $('li').live('click', function (e) {
+    //   e.preventDefault()
+    //   $('p img').attr({
+    //     src: $(this).children('a').attr('href'),
+    //     alt: $(this).text()
+    //   })
+    // });
 
+    // 정석 작성법
+    $(document).on('click', 'li a', function(e) {
+      e.preventDefault();
+      $('p img').attr({src:$(this).attr('href'),alt:$(this).text()})
+    } )
 
-
-       
-
-    </script>
+    $('button').on('click', function() {
+      $('ul').append(`<li><a href='building.jpg'>건물</a></li>`)
+    })
+  </script>
 
 
 
@@ -34,4 +51,5 @@
 
 
 </body>
+
 </html>

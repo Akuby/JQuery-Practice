@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> slideDown() slideUp() </title>
+<!-- jQuery library -->
+<style>
+  div {
+    display: none;
+  }
+</style>
+<script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <button id="up">slide감추기</button>
+  <button id="down">slide보이기</button>
+	<div>
+		<img src="sample1.jpg" alt=" " width="200" />
+	</div>
+
+	
+	
+	
+	<!---------- jQuery code Start ---------->
+	<script>
+
+		$('#up').click(function() {				
+			$('div:not(:animated)').slideUp()
+		});
+
+		$('#down').click(function() {
+      $('div:not(:animated)').slideDown()
+		});
+
+	</script>
+
+
+
+
+
+
+</body>
+</html>

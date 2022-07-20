@@ -17,8 +17,18 @@
 		
 		// 마우스 오버시 바다이미지, 마우스 아웃시 꽃이미지를 로드하시오
 		
+		// $('img').on('mouseover', function() { // 이벤트 버블링이 들어간다.
+    //   $(this).attr({src:'sea.jpg',alt:'바다'})
+    // }).on('mouseout', function() {
+    //   $(this).attr({src:'flower.jpg',alt:'꽃'})
+    // })
 		
-		
+    $('img').on('mouseenter', function() { // 부모 자식 요소 간 이벤트 버블링이 없다.
+      $(this).attr({src:'sea.jpg',alt:'바다'})
+    }).on('mouseleave', function() {
+      $(this).attr({src:'flower.jpg',alt:'꽃'})
+    })
+
 	</script>
 
 
