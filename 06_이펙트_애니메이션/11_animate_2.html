@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> animate() </title>
+  <style>
+    div {
+      width: 400px;
+      overflow: hidden;
+    }
+    p {
+      width: 800px;
+      display: flex;
+    }
+    img {
+      display: block;
+      margin: 0;
+    }
+    
+  </style>
+  <!-- jQuery library -->
+  <script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+  <div>
+    <p>
+      <img src="flower.jpg" alt="flower" id="flower" />
+      <img src="building.jpg" alt="building" id="building" />
+    </p>
+  </div>
+
+
+
+  <!---------- jQuery code Start ---------->
+  <script>
+    // p를 움직여야 알맞게 작동한다.
+    $('#flower').on('click', function(){
+      $('div p').animate({marginLeft : -400})
+    })
+    $('#building').on('click', function(){
+      $('div p').animate({marginLeft : 0})
+    })
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> fadeIn() / fadeOut() </title>
+  <style type="text/css">
+    img {
+      display: none;
+    }
+  </style>
+  <!-- jQuery library -->
+  <script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <button id="stop">stop</button>
+  <button id="play">play</button><br>
+  <img src="flower.jpg" alt="flower" />
+
+
+
+  <!---------- jQuery code Start ---------->
+  <script>
+
+    // 1. 3초후에 자동으로 이미지가 페이드인되도록 하시오
+
+    // function fading() {
+    //   $('img').fadeIn(1000);
+    // }
+    // setTimeout(fading, 3000);
+
+    // 2. 3초마다 자동으로 이미지가 페이드를 반복하도록 하시오 
+
+      function fading() {
+        $('img').fadeToggle(1000);
+      }
+      let timer = setInterval(fading, 3000); // 나타나는 1초까지 포함하여 3초. 체감상 2초!
+
+    // 3. 페이드시작, 페이드멈춤 버튼을 추가하여 페이드 제어하기 			
+
+      $('#stop').on('click', function() {
+        clearInterval(timer) // clearInterval에는 변수만 담을 수 있기 때문에 setInterval을 변수에 담아서 선언해준다.
+        console.log(timer) // clearInterval은 timer에 1을 할당한다.
+      })
+      $('#play').on('click', function() {
+        timer = setInterval(fading, 3000) // timer 변수를 활용해야 다시 stop이 작동할 수 있다.
+      })
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

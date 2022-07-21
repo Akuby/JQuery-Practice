@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> animate_queue </title>
+  <style type="text/css">
+    div {
+      background: #6699FF;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      left: 200px;
+    }
+  </style>
+  <!-- jQuery library -->
+  <script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+  <p>
+    <a href="#" class="run">animate</a>
+    <a href="#" class="run2">animate2</a>
+  </p>
+
+  <div> </div>
+
+
+
+  <!---------- jQuery code Start ---------->
+  <script>
+    //$(document).ready(function() {
+
+    /* 애니메이션이  순서대로 실행되도록
+    
+    1. 50%까지 투명해지면서 현 위치에서 400px만큼 이동
+    2. 이동된 위치에서 아래로 100px만큼 이동
+    3. 멈춘 상태에서 slideUp
+    
+    */
+
+    $('.run').on('click', function() {
+      $('div').animate({left:'+=400'/*현재 위치에서 400 이동*/,opacity:0.5}, 2000, function() {
+        $('div').animate({top:'+=100'}, 1000, function() {
+          $('div').slideUp(1000)
+        })
+      })
+    })
+
+    // .run2를 클릭 시 100만큼 이동하면서 너비, 높이가 10씩 줄어들도록
+
+    $('.run2').on('click', function() {
+      $('div').animate({left:'+=100', width:'-=10', height:'-=10'})
+    })
+
+
+
+
+
+    //});
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>
