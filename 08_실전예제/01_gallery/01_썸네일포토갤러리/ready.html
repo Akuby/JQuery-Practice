@@ -62,16 +62,27 @@
 		3. a 태그의 값을 제거
 		*/
 
-    $('.thumbs a').on('click', function(e) {
-      e.preventDefault()
-      $('#largeImg img')
-      .attr({
-        src:$(this).attr('href'), 
-        alt: $(this).attr('title')
+    // $('.thumbs a').on('click', function(e) {
+    //   e.preventDefault()
+    //   $('#largeImg img')
+    //   .attr({
+    //     src:$(this).attr('href'), 
+    //     alt: $(this).attr('title')
+    //   })
+    //   .stop() // 기존의 애니메이션 중지해서 이전의 값이 넘어오지 못하도록 방지.
+    //   .css('opacity', '0')
+    //   .animate({opacity:1})
+    // })
+    const img = document.getElementById('largeImg').children[0]
+    let as = document.querySelectorAll('.thumbs a')
+    as.forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        img.src = e.currentTarget.href;
+        img.alt = e.currentTarget.title;
+        img.style.opacity = 0; // 어떻게 transition?
+        img.style.opacity = 1;
       })
-      .stop() // 기존의 애니메이션 중지해서 이전의 값이 넘어오지 못하도록 방지.
-      .css('opacity', '0')
-      .animate({opacity:1})
     })
 
   </script>
