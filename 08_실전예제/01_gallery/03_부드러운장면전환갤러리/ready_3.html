@@ -29,7 +29,10 @@
 
     .fadeShow .active {
       z-index: 1;
+      animation: fading 1s;
     }
+
+
     body a {
       text-decoration: none;
       color: #fff;
@@ -38,11 +41,18 @@
       position: absolute;
       top: 150px;
     }
-    #next{
+
+    #next {
       right: 0;
     }
+
     #prev {
       left: -10px;
+    }
+
+    @keyframes fading {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
     }
   </style>
 </head>
@@ -75,24 +85,46 @@
 			동시에 클래스 네임 삭제
 		
 		*/
+    // let fading = function () {
+    //   $('.fadeShow img:eq(1):not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500, function() {
+    //     $('.fadeShow').append($('.fadeShow img:eq(0)')).children('img:last').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
+    //   })
+    // }
+    // let fading2 = function () {
+    //   $('.fadeShow img:last:not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500,function() {
+    //     $('.fadeShow').prepend($('.fadeShow img:last')).children('img:eq(1)').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
+    //   })
+    // }
+
+
+    const next_btn = document.querySelector('#next');
+    const prev_btn = document.querySelector('#prev');
+    const fadeShow = document.querySelector('.fadeShow')
+    const imgs = document.querySelectorAll('.fadeShow img')
+
     let fading = function () {
-      $('.fadeShow img:eq(1):not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500, function() {
-        $('.fadeShow').append($('.fadeShow img:eq(0)')).children('img:last').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
-      })
+      fadeShow.children[1].classList.add('active');
+      fadeShow.append(fadeShow.children[0]);
+      fadeShow.lastElementChild.classList.remove('active')
     }
-    let fading2 = function () {
-      $('.fadeShow img:last:not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500,function() {
-        $('.fadeShow').prepend($('.fadeShow img:last')).children('img:eq(1)').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
-      })
+    let fading2 = function () { // 머리가 안좋아서 못하겠다.
+      fadeShow.lastElementChild.classList.add('active');
+      setTimeout(() => {
+        fadeShow.children[1].classList.remove('active') 
+        fadeShow.prepend(fadeShow.lastElementChild);
+      }, 1000);
     }
-    let timer = setInterval(fading, 3000);
-    $('#next').on('click', fading)
-    $('#prev').on('click', fading2)
-    $('a').on('click', function() {
-      clearInterval(timer)
-      timer = setInterval(fading, 3000);
-    })
-</script>
+    // let timer = setInterval(fading, 3000);
+    next_btn.addEventListener('click', fading)
+    prev_btn.addEventListener('click', fading2)
+    // let btns = document.querySelectorAll('a');
+    // btns.forEach(el => {
+    //   el.addEventListener('click', () => {
+    //     clearInterval(timer)
+    //     timer = setInterval(fading, 3000);
+    //   });
+    // });
+  </script>
 
 
 
