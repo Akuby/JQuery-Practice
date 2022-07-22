@@ -11,6 +11,7 @@
       padding: 0;
       width: 620px;
       background: #192839;
+      position: relative;
     }
 
     .fadeShow {
@@ -29,11 +30,24 @@
     .fadeShow .active {
       z-index: 1;
     }
+    body a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 25px;
+      z-index: 2;
+      position: absolute;
+      top: 150px;
+    }
+    #next{
+      right: 0;
+    }
+    #prev {
+      left: -10px;
+    }
   </style>
 </head>
 
 <body>
-
   <div class="fadeShow">
     <img class="active" src="slide1.jpg" alt="image1" />
     <img src="slide2.jpg" alt="image2" />
@@ -41,6 +55,8 @@
     <img src="slide4.jpg" alt="image4" />
     <img src="slide5.jpg" alt="image5" />
   </div>
+  <a href="#" id="prev">이전</a>
+  <a href="#" id="next">다음</a>
 
 
   <!---------- jQuery code Start ---------->
@@ -60,12 +76,23 @@
 		
 		*/
     let fading = function () {
-      $('.fadeShow img:eq(1)').addClass('active').css({opacity : 0}).animate({opacity:1}, 1000, function() {
+      $('.fadeShow img:eq(1):not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500, function() {
         $('.fadeShow').append($('.fadeShow img:eq(0)')).children('img:last').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
       })
     }
-    setInterval(fading, 3000);
-  </script>
+    let fading2 = function () {
+      $('.fadeShow img:last:not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500,function() {
+        $('.fadeShow').prepend($('.fadeShow img:last')).children('img:eq(1)').removeClass('active') // 몇개든 간에 마지막 요소를 지정해야하기 때문에 eq보다는 last를 쓴다.
+      })
+    }
+    let timer = setInterval(fading, 3000);
+    $('#next').on('click', fading)
+    $('#prev').on('click', fading2)
+    $('a').on('click', function() {
+      clearInterval(timer)
+      timer = setInterval(fading, 3000);
+    })
+</script>
 
 
 
