@@ -51,8 +51,13 @@
     }
 
     @keyframes fading {
-      0% {opacity: 0;}
-      100% {opacity: 1;}
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -102,18 +107,17 @@
     const fadeShow = document.querySelector('.fadeShow')
     const imgs = document.querySelectorAll('.fadeShow img')
 
-    let fading = function () {
+    function fading() {
       fadeShow.children[1].classList.add('active');
       fadeShow.append(fadeShow.children[0]);
       fadeShow.lastElementChild.classList.remove('active')
     }
-    let fading2 = function () { // 머리가 안좋아서 못하겠다.
-      fadeShow.lastElementChild.classList.add('active');
-      setTimeout(() => {
-        fadeShow.children[1].classList.remove('active') 
-        fadeShow.prepend(fadeShow.lastElementChild);
-      }, 1000);
-    }
+
+    function fading2() { // 머리가 안좋아서 못하겠다.
+      fadeShow.prepend(fadeShow.lastElementChild);
+      fadeShow.children[1].classList.remove('active');
+      fadeShow.children[0].classList.add('active');
+    };
     // let timer = setInterval(fading, 3000);
     next_btn.addEventListener('click', fading)
     prev_btn.addEventListener('click', fading2)
