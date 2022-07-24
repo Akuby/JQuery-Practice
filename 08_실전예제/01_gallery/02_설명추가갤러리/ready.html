@@ -30,7 +30,6 @@
 
     #largeImg {
       border: solid 1px #ccc;
-      width: 500px;
       height: 280px;
       padding: 5px;
       margin-left: 110px;
@@ -44,10 +43,17 @@
       content: "";
       display: block;
       position: absolute;
+      z-index: 1;
       width: 500px;
       height: 280px;
       background-color: #000;
-      opacity: 0.3;
+      opacity: 0.5;
+    }
+
+    #largeImg img {
+      width: 500px;
+      position: absolute;
+      animation: fading 1s forwards;
     }
 
     #caption {
@@ -58,11 +64,16 @@
       position: absolute;
       font-family: 'Noto Sans KR', sans-serif;
       animation: moving 1s forwards;
+      z-index: 2;
     }
 
     @keyframes moving {
       0% { padding-top: 30px; opacity: 0;}
       100% { padding-top: 0px; opacity: 1;}
+    }
+    @keyframes fading {
+      0% { opacity: 0;}
+      100% { opacity: 1;}
     }
   </style>
   <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
@@ -124,23 +135,26 @@
       el.style.display = 'none';
     });
     const imgs = document.querySelectorAll('div.thumbs a');
-    const targetImg = document.querySelector('#largeImg img')
+    const largeImg = document.querySelector('#largeImg')
     imgs.forEach((el, i) => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
-        targetImg.src = el.href;
-        targetImg.alt = el.title;
-        let hasCap = document.getElementById('caption')
-        if (hasCap != null) {
-          hasCap.remove()
-        }
+        let newImg = document.createElement('img');
+        newImg.setAttribute('src', el.href);
+        newImg.setAttribute('alt', el.title);
+        largeImg.append(newImg);
+        setTimeout(() => {
+          largeImg.children[0].remove()
+        }, 1000);
+        let hasCap = document.getElementById('caption');
+        if (hasCap != null) hasCap.remove();
         let desc = document.createElement('div');
         desc.setAttribute('id', 'caption');
-        targetImg.parentElement.appendChild(desc);
+        largeImg.appendChild(desc);
         desc.innerText = ems[i].innerText
       })
     })
-    // 배경에 페이드인아웃을 주려면 겹치게 놓아야 하는데, 이는 03 예제에서 다루니까 패스.
+    // 원하던 대로 구현 성공!
   </script>
 
 </body>
