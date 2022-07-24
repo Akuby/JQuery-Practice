@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title> Sliding Captions 갤러리 </title>
-  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <style type="text/css">
     body {
       margin: 20px auto;
@@ -35,17 +35,37 @@
       padding: 5px;
       margin-left: 110px;
       overflow: hidden;
-
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+    }
+    #largeImg::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 500px;
+      height: 280px;
+      background-color: #000;
+      opacity: 0.3;
     }
 
     #caption {
-      background: url(captionBg.png) repeat-y;
-      /* border: 1px solid #CCC; */
+      color: #fff;
+      font-weight: 700;
+      font-size: 50px;
       padding: 10px;
-      position: relative;
-      color: #FFFFFF;
+      position: absolute;
+      font-family: 'Noto Sans KR', sans-serif;
+      animation: moving 1s forwards;
+    }
+
+    @keyframes moving {
+      0% { padding-top: 30px; opacity: 0;}
+      100% { padding-top: 0px; opacity: 1;}
     }
   </style>
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -53,16 +73,14 @@
   <div class="thumbs">
 
     <a href="images/pic1.jpg" title="image1"><img src="images/th_pic1.jpg" /></a>
-    <em>Lorem Ipsum is simply dummy text of the pdrinting and typesetting industry.</em>
+    <em>각양각색의 메뉴</em>
 
 
     <a href="images/pic2.jpg" title="image2"><img src="images/th_pic2.jpg" /></a>
-    <em> Lorem Ipsum is simply dummy tely dummy thely dummy tegxt of thely try.
-      Sed facilisis, sem a luctus bibendum, dui risus pellentesque velit, quis tempor magna
-      sem vel justo. Etiam eget ipsum ante. </em>
+    <em>기술과 디자인의 협업</em>
 
     <a href="images/pic3.jpg" title="image3"><img src="images/th_pic3.jpg" /></a>
-    <em> Lorem Ipsum is simply dummy.</em>
+    <em>전문적 인재 양성</em>
 
   </div>
 
@@ -77,39 +95,54 @@
   <!---------- jQuery code Start ---------->
   <script>
     /* 할 일 목록
-		
 		1. em 태그를  hide() 메서드를 이용, 처음엔 안보이도록 한다
-			
 		2. 이미지를  클릭할 때마다 큰이미지가 바뀌도록 한다
-		
-		3. a태그 값 삭제
-		
-		4. 클래스 thumbs의 a 태그를 클릭시 em이 추가될 위치를 지정		
-			( 아이디 largeImg 내 끝에 아이디 caption인 div 추가 )
-		
-		5. 이미지 클릭시 해당 em 태그 내용이 아이디 caption에 전달되도록 하고,
+		3. 클래스 thumbs의 a 태그를 클릭시 아이디 largeImg 내 끝에 아이디 caption인 div 추가
+		4. 이미지 클릭시 해당 em 태그 내용이 아이디 caption에 전달되도록 하고,
 			큰이미지의 하단에서 나타나도록
-			
-		6. 아이디 caption 요소 삭제
-		
+		5. 아이디 caption 요소 삭제
 		완료후, 큰이미지에도 부드럽게 화면전환하는 effect를 적용한다
 		
 		*/
-    $('.thumbs em').hide(); // display:none을 활용하는 jQuery의 hide()
-    $('.thumbs a').on('click', function(e) {
-      e.preventDefault();
-      $('#largeImg img').attr({src:$(this).attr('href'), alt: $(this).attr('title')})
-      $('#caption').remove();
-      $('#largeImg').append(`<div id="caption">${$(this).next().text()}</div>`);
-      $('#caption').animate({top:-$('#caption').innerHeight()}) 
-      // css('height')는 px이 붙어 자료형이 str이지만, height()를 사용하면 type이 number로 들어간다.
-      // 또한, padding값을 일일히 계산해주지 않아도 innerHeight()를 사용할 수 있다.
-      // jQuery에서는 innerWidth(패딩까지), outerWidth(보더까지), outerWidth(true)(마진까지) 등을 활용할 수 있다.
+    // $('.thumbs em').hide(); // display:none을 활용하는 jQuery의 hide()
+    // $('.thumbs a').on('click', function(e) {
+    //   e.preventDefault();
+    //   $('#largeImg img').attr({src:$(this).attr('href'), alt: $(this).attr('title')})
+    //   $('#caption').remove();
+    //   $('#largeImg').append(`<div id="caption">${$(this).next().text()}</div>`);
+    //   $('#caption').animate({top:-$('#caption').innerHeight()}) 
+    // css('height')는 px이 붙어 자료형이 str이지만, height()를 사용하면 type이 number로 들어간다.
+    // 또한, padding값을 일일히 계산해주지 않아도 innerHeight()를 사용할 수 있다.
+    // jQuery에서는 innerWidth(패딩까지), outerWidth(보더까지), outerWidth(true)(마진까지) 등을 활용할 수 있다.
 
-      // 늘 display:none등을 사용할 때는, 웹 접근성을 반드시 준수하도록 할 것!
+    // 늘 display:none등을 사용할 때는, 웹 접근성을 반드시 준수하도록 할 것!
+    // })
+
+    // in vanilla JS
+    const ems = document.querySelectorAll('div.thumbs em');
+    ems.forEach(el => {
+      el.style.display = 'none';
+    });
+    const imgs = document.querySelectorAll('div.thumbs a');
+    const targetImg = document.querySelector('#largeImg img')
+    imgs.forEach((el, i) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        targetImg.src = el.href;
+        targetImg.alt = el.title;
+        let hasCap = document.getElementById('caption')
+        if (hasCap != null) {
+          hasCap.remove()
+        }
+        let desc = document.createElement('div');
+        desc.setAttribute('id', 'caption');
+        targetImg.parentElement.appendChild(desc);
+        desc.innerText = ems[i].innerText
+      })
     })
+    // 배경에 페이드인아웃을 주려면 겹치게 놓아야 하는데, 이는 03 예제에서 다루니까 패스.
   </script>
-  
+
 </body>
 
 </html>
