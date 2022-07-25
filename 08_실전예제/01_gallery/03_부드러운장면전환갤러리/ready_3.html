@@ -29,9 +29,11 @@
 
     .fadeShow .active {
       z-index: 1;
-      animation: fading 1s;
     }
+    .fadeShow .on {
+      animation: fading 1s;
 
+    }
 
     body a {
       text-decoration: none;
@@ -77,18 +79,18 @@
   <!---------- jQuery code Start ---------->
   <script>
     /* 할 일 목록
-		
+
 		Tip1. position: absolute의 적용으로 보이는 순서는 아래그림부터
-			
+
 		Tip2. 클래스 active로 인해 첫번째 그림이 보이고 있음
-		
+
 		1. 두번째 이미지가 전환되어 보이도록 하기 위해 클래스 active 추가
-		
+
 		2. animate()를 이용해 이펙트 적용
-		
+
 		3. 이펙트 적용시 첫번째 그림은 클래스 fadeShow내 마지막으로 이동하고,
 			동시에 클래스 네임 삭제
-		
+
 		*/
     // let fading = function () {
     //   $('.fadeShow img:eq(1):not(:animated)').addClass('active').css({opacity : 0}).animate({opacity:1}, 500, function() {
@@ -108,15 +110,22 @@
     const imgs = document.querySelectorAll('.fadeShow img')
 
     function fading() {
-      fadeShow.children[1].classList.add('active');
+      fadeShow.children[1].classList.add('active', 'on');
       fadeShow.append(fadeShow.children[0]);
       fadeShow.lastElementChild.classList.remove('active')
+      setTimeout(function() {
+        fadeShow.children[0].classList.remove('on');
+      }, 1000)
     }
 
     function fading2() { // 머리가 안좋아서 못하겠다.
-      fadeShow.prepend(fadeShow.lastElementChild);
-      fadeShow.children[1].classList.remove('active');
-      fadeShow.children[0].classList.add('active');
+      fadeShow.lastElementChild.classList.add('active', 'on');
+      setTimeout(function() {
+        fadeShow.lastElementChild.classList.remove('on');
+        fadeShow.children[0].classList.remove('active');
+        fadeShow.prepend(fadeShow.lastElementChild);
+      }, 1000)
+
     };
     // let timer = setInterval(fading, 3000);
     next_btn.addEventListener('click', fading)
