@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+/* 초기화 */
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  position: relative;
+  font-family: 'Roboto Slab', serif;
+}
+
+/* sliderWrap */
+#sliderWrap {
+  width: 100%;
+  position: relative;
+  height: 700px;
+  overflow: hidden;
+}
+
+#sliderList {
+  width: 300%;
+}
+
+#sliderList .slider {
+  width: 33.333%;
+  height: 700px;
+  background: no-repeat center / cover;
+  float: left;
+}
+
+#sliderList .slider1 {
+  background-image: url(./img1.jpg);
+}
+
+#sliderList .slider2 {
+  background-image: url(./img2.jpg);
+}
+
+#sliderList .slider3 {
+  background-image: url(./img3.jpg);
+}
+
+#sliderList .slider div {
+  font-family: 'Song Myung', serif;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  color: #fff;
+  font-size: 100px;
+  text-align: center;
+}
+
+/* 좌우버튼 */
+#posBtn a {
+  position: absolute;
+  top: 300px;
+  font-size: 30px;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  text-indent: -9999em;
+}
+
+#posBtn a.prevBtn {
+  left: 100px;
+  background: url(./left-arrow.png) no-repeat top center / cover;
+}
+
+#posBtn a.nextBtn {
+  right: 100px;
+  background: url(./right-arrow.png) no-repeat top center / cover;
+}
+
+/* 번호버튼 */
+#numBtn {
+  position: absolute;
+  bottom: 50px;
+  left: calc(50% - 105px);
+}
+
+#numBtn a {
+  display: block;
+  float: left;
+  margin: 0 10px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 25px;
+  background: #fff;
+  color: #009688;
+  border-radius: 50%;
+}
+
+#numBtn a.active {
+  background-color: #009688;
+  color: #fff;
+}
