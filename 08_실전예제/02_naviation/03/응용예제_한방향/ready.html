@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>슬라이딩 윈도우</title>
+  <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body>div {
+      position: relative;
+      margin: 20px auto;
+      width: 160px;
+      height: 125px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    p {
+      cursor: pointer;
+    }
+
+    p.prev {
+      position: absolute;
+      top: 50px;
+      left: -10px;
+    }
+
+    p.next {
+      position: absolute;
+      top: 50px;
+      right: -10px;
+    }
+
+    #wrap {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    ul {
+      float: left;
+      /* width: 420px; */
+    }
+
+    ul li {
+      list-style: none;
+      float: left;
+      width: 140px;
+      height: 105px;
+      display: inline;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <p class="prev"><img src="images/btn_prev.png" alt="이전" /></p>
+    <p class="next"><img src="images/btn_next.png" alt="다음" /></p>
+    <div id="wrap">
+      <ul>
+        <li><img src="images/photo1_thum.jpg" alt="" /></li>
+        <li><img src="images/photo2_thum.jpg" alt="" /></li>
+        <li><img src="images/photo3_thum.jpg" alt="" /></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // ul 넓이 자동계산
+    const $lis = $('#wrap ul li'); // jquery에서는 선택자 변수에 $를 붙인다
+    const liWidth = $lis.width()
+    let totalWidth = liWidth * $lis.length;
+    $('#wrap ul').css({width:totalWidth})
+
+    const nextSliding = function () {
+      $('#wrap ul:not(:animated)').animate({marginLeft:-liWidth}, 1000, function() {
+        $(this).append($('>li:first',this)).css({marginLeft:0}) // $('>li:first',this) 이렇게 쓰는구나
+      })
+    }
+
+    const prevSliding = function () { // 마지막 li를 prepend, marginLeft를 땡겨준 상태로 애니메이션 시작.
+      $('#wrap ul:not(:animated)').prepend($('#wrap ul li:last')).css({marginLeft:-liWidth}).animate({marginLeft:0}, 1000)
+    } 
+
+    let timer = setInterval(nextSliding, 3000);
+    // 이전
+    $(".prev").click(function() {prevSliding();});
+
+    // 다음
+    $(".next").click(function() {nextSliding()});
+
+    $('p').on('click', function() {
+      clearInterval(timer);
+      timer = setInterval(nextSliding, 3000);
+    })
+  </script>
+</body>
+
+</html>
