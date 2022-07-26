@@ -10,14 +10,14 @@ let prevSlider = function () {
     })
     .animate({
       marginLeft:'-100%'
-    }, 1000, function() {
+    }, 500, function() {
       sList.prepend($('.slider1'))
       .css({marginLeft:'-200%'})
     })
   } else {
     sList.not(":animated").animate({
       marginLeft:"+=100%"
-    }, 1000)
+    }, 500)
   }
 }
 let nextSlider = function () {
@@ -30,7 +30,7 @@ let nextSlider = function () {
       })
       .animate({
         marginLeft: "-100%"
-      }, 1000, function () {
+      }, 500, function () {
         sList.append($(".slider3")).css({
           marginLeft: 0
         })
@@ -38,7 +38,7 @@ let nextSlider = function () {
   } else {
     sList.not(":animated").animate({
       marginLeft: "-=100%"
-    }, 1000)
+    }, 500)
   }
 }
 
@@ -49,12 +49,16 @@ $(".nextBtn").on('click', function (e) {
   nextSlider();
 })
 $("#numBtn a").on('click', function (e) {
+  $('#numBtn a').removeClass('active')
   num = $(this).index();
+  $(this).addClass('active')
   sList.animate({
     marginLeft: `${num*(-100)}%`
   }), 1000
 })
 
 $("#posBtn a, #numBtn a").on('click', function (e) {
+  $('#numBtn a').removeClass('active')
+  $(`#numBtn a:eq(${num})`).addClass('active')
   e.preventDefault();
 })
