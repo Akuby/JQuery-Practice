@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 배경색 애니메이션 변경 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+
+<style>
+body {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:13px;
+}
+#colorPicker div{
+	float:left;
+	width:90px;
+	height:90px;
+	text-align:center;
+	color:#000;
+	border:#000 thin solid;
+	margin-right:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div id = "colorPicker">
+    <div>#FF8FB1</div>
+    <div>#B270A2</div>
+    <div>#7A4495</div>
+    <div>#FCE2DB</div>
+    <div>#72FFFF</div>
+</div>
+      
+<!------------------------ jQuery 코드 ----------------------->
+<script>
+  $('#colorPicker>div').each(function () {
+    let color = $(this).text();
+    $(this).css({backgroundColor:color}).on('click', function() {
+      $('body').stop().animate({backgroundColor:$(this).text()}, 500) // jquery ui 에서는 css 타겟 속기 불가
+    })
+  })
+</script>
+</body>
+</html>
+

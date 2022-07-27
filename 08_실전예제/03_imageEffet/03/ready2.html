@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>이펙트효과</title>
+  <style>
+    #photo {
+      display: flex;
+    }
+
+    #photo div {
+      position: relative;
+      overflow: hidden;
+      width: 476px;
+      height: 505px;
+      border: 1px solid #000;
+      background: no-repeat center;
+    }
+
+    #photo div img {
+      position: absolute;
+      top: 0;
+      left: 476px;
+    }
+  </style>
+  <script src="./jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div id="photo">
+    <div class="photo1"><img src="images/fit_over.jpg" alt=""></div>
+    <div class="photo1"><img src="images/frm_over.jpg" alt=""></div>
+    <div class="photo1"><img src="images/ldn_over.jpg" alt=""></div>
+  </div>
+  <script>
+    $('#photo div').each(function() {
+      let imgName = $(this).children('img').attr('src').substr(7, 3);
+      $(this).css({backgroundImage:`url(./images/${imgName}.jpg)`})
+    }).hover(function() {
+      $(this).children('img').stop().animate({left:0}, 500)
+    }, function() {
+      $(this).children('img').stop().animate({left:476}, 500)
+    })
+  </script>
+</body>
+
+</html>

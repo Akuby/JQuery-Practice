@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> 직접 만들어 보는 이미지 hover 효과 </title>
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="jquery-ui.min.js"></script>
+
+  <style>
+    body {
+      margin: 20px auto;
+      padding: 0;
+      width: 600px;
+      background: #192839;
+    }
+
+    div {
+      background-image: url(img/pic_bg.jpg);
+      width: 600px;
+      height: 379px;
+      border: 5px #EF4018 solid;
+      overflow: hidden;
+    }
+
+    div img {
+      display: none;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div><img src="img/pic.jpg" /></div>
+
+
+  <!------------------------ jQuery 코드 ----------------------->
+  <script>
+    $('div').hover(function () {
+      // 크기와 투명도를 동시에 조절하려면 fadein은 사용불가
+      $(this).children('img')
+        .css({
+          display: 'block',
+          width: 700,
+          height: 479,
+          top:-50,
+          left:-50,
+          opacity:0
+        }).stop().animate({
+          width: 600,
+          height: 379,
+          top:0,
+          left:0,
+          opacity:1
+        })
+    }, function () {
+      $(this).children('img').stop().fadeOut()
+    })
+  </script>
+</body>
+
+</html>
