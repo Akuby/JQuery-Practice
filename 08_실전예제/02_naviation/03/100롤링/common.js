@@ -61,20 +61,20 @@ let nextSlider = function () {
   $("#numBtn a:eq(" + num + ")").addClass('active')
 }
 let timer = setInterval(nextSlider, 3000)
-
-$(".prevBtn").on('click', function (e) {
+let timerOn = true;
+$(".prevBtn").on('click', function () {
   if(state == 1) {
     state = 0;
   prevSlider();
   }
 })
-$(".nextBtn").on('click', function (e) {
+$(".nextBtn").on('click', function () {
   if(state == 1) {
     state = 0;
     nextSlider();
   }
 })
-$("#numBtn a").on('click', function (e) {
+$("#numBtn a").on('click', function () {
   $("#numBtn a").removeClass('active');
   $(this).addClass('active')
   num = $(this).index();
@@ -86,4 +86,14 @@ $("#posBtn a, #numBtn a").on('click', function (e) {
   e.preventDefault();
   clearInterval(timer);
   timer = setInterval(nextSlider, 3000);
+})
+$('.play').on('click', function() {
+  if (timerOn == false){
+    timer = setInterval(nextSlider, 3000);
+    timerOn = true;
+  }
+})
+$('.stop').on('click', function() {
+  clearInterval(timer);
+  timerOn = false;
 })
