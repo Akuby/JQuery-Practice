@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> each() </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<ul>
+    <li data-test="1">포도</li>
+    <li data-test="2">바나나</li>
+    <li data-test="3">사과</li>
+</ul>  
+
+
+<!------------------------ jQuery 코드 ----------------------->
+<script>
+  $('ul li').each(function() {
+    console.log($(this).text())
+  })
+</script>  
+
+</body>
+</html>
