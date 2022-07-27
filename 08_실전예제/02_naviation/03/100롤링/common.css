@@ -30,11 +30,11 @@ body {
 }
 
 #sliderList {
-  width: 300%;
+  width: 500%;
 }
 
 #sliderList .slider {
-  width: 33.333%;
+  width: 20%;
   height: 700px;
   background: no-repeat center / cover;
   float: left;
@@ -50,6 +50,14 @@ body {
 
 #sliderList .slider3 {
   background-image: url(./img3.jpg);
+}
+
+#sliderList .slider4 {
+  background-image: url(./img1.jpg);
+}
+
+#sliderList .slider5 {
+  background-image: url(./img2.jpg);
 }
 
 #sliderList .slider div {
@@ -92,7 +100,7 @@ body {
 
 #numBtn a {
   display: block;
-  float: left;
+  float: left; /*flex로 바꿔보기*/
   margin: 0 10px;
   width: 50px;
   line-height: 50px;
