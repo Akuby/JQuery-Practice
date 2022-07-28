@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+body,
+h1,
+h2,
+h3,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 탭 */
+section {
+  width: 1200px;
+  height: 450px;
+  margin: 0 auto;
+  border: 1px solid #000;
+  position: relative;
+}
+
+section h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+article {
+  margin: 0 20px;
+}
+
+article h3 {
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+article h3.on {
+  color: #000;
+}
+
+article ul {
+  position: absolute;
+  width: 1200px;
+  height: 300px;
+  display: flex;
+  border: 1px solid #000;
+  bottom: 0;
+  left: 0;
+}
+
+article ul li {
+  width: 25%;
+  text-align: center;
+}
