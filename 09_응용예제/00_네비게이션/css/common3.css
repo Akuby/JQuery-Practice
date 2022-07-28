@@ -153,6 +153,20 @@ a {
   height: auto;
 }
 
+#videoBtn {
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  top: 600px;
+  left: calc(50% - 75px);
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: .5s;
+}
+
 /* 슬로건 */
 #slogan {
   position: absolute;
