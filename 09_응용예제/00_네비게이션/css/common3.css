@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+/* 초기화 */
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* 헤더 */
+#header {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  transition: .5s;
+}
+
+#header.on {
+  height: 300px;
+  /* background: linear-gradient(to bottom,#a9d4ff 70px, #c2ecff 70px ); */
+  background-color: #fff;
+}
+
+#header.on::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 230px;
+  background-color: rgb(206, 255, 255);
+  top: 70px;
+}
+
+#header h1 {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+#header h1 a {
+  color: #fff;
+}
+
+#header.on h1 a {
+  color: #2D6681;
+}
+
+/* myPage */
+#myPage {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+
+#myPage ul {
+  display: flex;
+}
+
+#myPage li {
+  margin-left: 20px;
+}
+
+#myPage li a {
+  color: #fff;
+}
+
+#header.on #myPage li a {
+  color: #2D6681;
+}
+
+/* gnb */
+.depth1 {
+  display: flex;
+}
+
+.depth1>li {
+  position: relative;
+  width: 200px;
+  text-align: center;
+}
+
+.depth1>li>a {
+  display: block;
+  width: 200px;
+  color: #fff;
+  height: 70px;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+
+#header.on a {
+  color: #2D6681;
+}
+#header.on .depth1 > li:hover {
+  background-color: #dbf4ff;
+}
+#header.on .depth1 li:hover > a {
+  font-weight: 700;
+}
+
+/* depth2 */
+.depth2 {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.depth2 li {
+  line-height: 50px;
+}
+
+.depth2 li a {
+  color: #fff;
+}
+
+/* 비디오 */
+#videoWrap {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#video {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 960px);
+  min-width: 1920px;
+  min-height: 100%;
+  height: auto;
+}
+
+/* 슬로건 */
+#slogan {
+  position: absolute;
+  top: 300px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+#slogan h2 {
+  font-size: 150px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#slogan p {
+  font-size: 32px;
+  font-weight: 100;
+}
