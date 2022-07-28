@@ -91,8 +91,21 @@ body {
   color: #fff;
 }
 
+.depth1 li {
+  position: relative;
+}
+.depth1 li:nth-child(2) .depth2 {
+  right: -100px
+}
+.depth1 li:nth-child(3) .depth2 {
+  right: -50px
+}
+.depth1 li:last-child .depth2 {
+  right: 0;
+}
 
 .depth2 {
+  width: 300px;
   position: absolute;
   display: flex;
   top: 75px;
