@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      padding: 15px;
+      background: yellow;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    p.hello {
+      background: red;
+    }
+  </style>
+  <script src="../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+  <div>
+    <p class="hello">Hello World</p>
+  </div>
+  <p class="first"></p>
+  <p class="last"></p>
+
+  <script>
+    let pos = $('.hello').position();
+    let offset = $('.hello').offset();
+    console.log(pos)
+    $('.first').text(`x:${pos.left}, y:${pos.top}`) // 나한테 지정된 값만
+    $('.last').text(`x:${offset.left}, y:${offset.top}`) // 다른 요소에 의해 밀려난 값도 포함 ( 실제 위치 )
+
+
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

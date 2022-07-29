@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>말풍선 마우스 따라다니기</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: dotum;
+    }
+
+    /* CSS 적용 */
+    #area {
+      width: 1000px;
+      height: 500px;
+      margin: 50px auto 0;
+      background: powderblue;
+    }
+
+    /* 마우스를 따라다니기 위해서 position 속성 적용 */
+    #tip {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgb(12, 12, 136);
+      border-radius: 50%;
+    }
+  </style>
+  <script src="../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+  <div id="area" data-title="말풍선 마우스 따라다니기"></div>
+  <div id="tip"></div>
+  <script>
+    // 1. #tip이 보이지 않게
+    // 2. #area에 진입했을 때 #tip 나타나고, 마우스를 따라다니도록
+    $('#tip').hide()
+    $('#area')
+      .on('mouseenter', function () {
+        $('#tip')
+          .show()
+          // .text($(this)
+          //   .data('title'))
+      })
+      .on('mouseleave', function () {
+        $('#tip').hide();
+      })
+      .on('mousemove', function (e) {
+        $('#tip').css({top:e.pageY+5, left:e.pageX+5}) //offset은 tip이 area 안에 있을때 사용
+      })
+  </script>
+
+
+</body>
+
+</html>
