@@ -16,6 +16,7 @@
       border: 3px solid red;
       box-sizing: border-box;
       position: absolute;
+      top: 0;
     }
 
     ul {
@@ -37,10 +38,10 @@
   <script src="../jquery-3.6.0.min.js"></script>
   <script>
     $(function () {
-      $('#bg').hide();
+      $('#bg').css({left:$('ul li').first().position().left})
       $('ul li').mouseenter(function() {
         let pos = $(this).position()
-        $('#bg').show().stop().animate({top:pos.top, left:pos.left})
+        $('#bg').stop().animate({top:pos.top, left:pos.left})
       })
     })
   </script>
