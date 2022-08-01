@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/* 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2 {
+  margin: 0;
+}
+
+.hidden {
+  position: absolute;
+  left: -9999em;
+}
+
+/* 헤더 */
+#header {
+  height: 100vh;
+  background: #ffecd4;
+  text-align: center;
+  padding-top: 200px;
+}
+
+#header h1 { margin-bottom: 50px; opacity: 0; font-size: 60px;}
+
+#header h2 { opacity: 0;}
+
+/*섹션  */
+#content {width: 1200px; margin: 30px auto; height: 500px; display: flex; overflow: hidden;}
+
+#content>div {width: 25%; height: 500px; opacity: 0; margin-top: 200px;}
+
+#content1 {background: #e2a4ff;}
+
+#content2 {background: #a4ffbf;}
+
+#content3 {background: #fca4ff;}
+
+#content4 {background: #a4fcff;}
+
+/* 푸터 */
+#footer {
+  height: 500px;
+  border-top: 2px solid #000;
+}
