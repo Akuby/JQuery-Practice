@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+/* 초기화 */
+body,
+ul,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  position: absolute;
+  left: -9999em;
+}
+/* sliderWrap */
+#slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+#sliderWrap{
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* sliderList */
+#sliderList {
+  display: flex;
+  width: 3000px;
+  margin-left: -600px;
+}
+
+#sliderList li {
+  background: no-repeat center / cover;
+  width: 600px;
+  height: 500px;
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  margin-top: 100px;
+}
+
+#sliderList li:nth-child(2) {
+  width: 1200px;
+  height: 700px;
+  margin-top: 0;
+}
+
+#sliderList .slider1 {
+  background-image: url(../images/bg-1.jpg);
+}
+
+#sliderList .slider2 {
+  background-image: url(../images/bg-2.jpg);
+}
+
+#sliderList .slider3 {
+  background-image: url(../images/bg-3.jpg);
+}
+
+#sliderList .slider4 {
+  background-image: url(../images/bg-4.jpg);
+}
+/* 좌우버튼 */
+#btnPos a{
+  position: absolute;
+  top: 300px;
+  width: 50px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+#btnPos span {
+  position: absolute;
+  left: -999em;
+}
+#btnPos .prev {
+  left: 0;
+}
+#btnPos .next {
+  right: 0;
+}
+#btnPos a::after {
+  content: "<";
+  width: 50px;
+  text-align: center;
+  line-height: 72px;
+  position: absolute;
+  left: 0;
+  top:0;
+  color: #fff;
+  font-size: 50px;
+}
+#btnPos .next::after {
+  content: ">";
+}

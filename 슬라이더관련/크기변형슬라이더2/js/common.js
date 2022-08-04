@@ -1,0 +1,19 @@
+$('#sliderList').prepend($('#sliderList li:last'))
+$('#sliderList li').not($('#sliderList li:eq(1)')).css({opacity:0.5})
+let state = 1;
+let nextSliding = function() {
+  if (state == 1) {
+    state = 0;
+    $("#sliderList").animate({ marginLeft: -1200 }, 1000, function() {
+      $("#sliderList").append($('#sliderList>li:first')).css({marginLeft: -600});
+      state = 1;
+    });
+    $("#sliderList li:eq(1)").animate({ width: 600, height: 500, marginTop: 100, opacity: 0.5 }, 1000);
+    $("#sliderList li:eq(2)").animate({ width: 1200, height: 700, marginTop: 0, opacity:1 }, 1000);
+  }
+}
+let prevSliding = function() {
+  
+}
+$(".next").on('click', nextSliding)
+$('.prev').on('click', prevSliding)
