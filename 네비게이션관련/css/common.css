@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+/* 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+}
+
+/* 헤더 */
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  border-bottom: 1px solid #000;
+  background: #fff;
+  transition: .5s;
+}
+
+#header h1 {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+/* gnb */
+#gnbList a {
+  color: #000;
+}
+
+.snb {
+  line-height: 70px;
+}
+
+/* 섹션 */
+section {
+  height: 100vh;
+  background: #d8eaf1;
+}
+
+section h2 {
+  padding-top: 300px;
+  font-size: 50px;
+}
+
+@media screen and (min-width: 1000px) {
+  .gnbView {
+    display: none;
+  }
+  #header.on {
+    height: 300px;
+  }
+  #gnb {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #gnbList {
+    display: flex;
+  }
+
+  .item {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .gnbView {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgb(162, 162, 214);
+    text-indent: -9999em;
+    cursor: pointer;
+  }
+  #gnb {
+    position: fixed;
+    top: 50px;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    background: #fff;
+    font-size: 24px;
+    transition: 0.5s right;
+  }
+
+  #gnb.mobile {
+    right: 0;
+  }
+
+  .snb {
+    display: none;
+  }
+
+}
