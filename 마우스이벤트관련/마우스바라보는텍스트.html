@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스 바라보는 텍스트</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
+
+    div {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      width: 100%;
+      font-size: 10vw;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: -2px -1px 0 #f0f0f0, 1px -1px 0 #f0f0f0, -1px 1px 0 #f0f0f0, 1px 1px 0 #f0f0f0;
+      letter-spacing: 0.04em;
+    }
+
+    #wrap div:nth-child(1) {
+      text-shadow: -2px -1px 0 #8c00ff, 1px -1px 0 #8c00ff, -1px 1px 0 #8c00ff, 1px 1px 0 #8c00ff;
+    }
+
+    #wrap div:nth-child(2) {
+      text-shadow: -2px -1px 0 #4400ff, 1px -1px 0 #4400ff, -1px 1px 0 #4400ff, 1px 1px 0 #4400ff;
+    }
+
+    #wrap div:nth-child(3) {
+      text-shadow: -2px -1px 0 #0011ff, 1px -1px 0 #0011ff, -1px 1px 0 #0011ff, 1px 1px 0 #0011ff;
+    }
+
+    #wrap div:nth-child(4) {
+      text-shadow: -2px -1px 0 #0051ff, 1px -1px 0 #0051ff, -1px 1px 0 #0051ff, 1px 1px 0 #0051ff;
+    }
+
+    #wrap div:nth-child(5) {
+      text-shadow: -2px -1px 0 #0099ff, 1px -1px 0 #0099ff, -1px 1px 0 #0099ff, 1px 1px 0 #0099ff;
+    }
+
+    #wrap div:nth-child(6) {
+      text-shadow: -2px -1px 0 #00c3ff, 1px -1px 0 #00c3ff, -1px 1px 0 #00c3ff, 1px 1px 0 #00c3ff;
+    }
+
+    #wrap div:nth-child(7) {
+      text-shadow: -2px -1px 0 #00f7ff, 1px -1px 0 #00f7ff, -1px 1px 0 #00f7ff, 1px 1px 0 #00f7ff;
+    }
+  </style>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      let num = 46;
+      for (let i = 7; i > 1; i--) {
+        num -= i;
+        $('#wrap').append($('<div>web designer</div>'));
+        $('#wrap div:last-child').attr('data-num',num).css({letterSpacing:(i * 0.005 + 'em')})
+      }
+      // let n = 8;
+      // for (let i = 0; i < 7; i++) {
+      //   $('body > .text').clone().appendTo('#wrap');
+      //   $(`#wrap > .text:eq(${i})`).attr({
+      //     'data-num': num
+      //   }).css({letterSpacing:(i*0.005)+'em'})
+      //   num -= num - (n--);
+      // }
+      $(document).on('mousemove', function (e) {
+        $('div').each(function () {
+          let dataNum = $(this).data('num');
+          let posX = (e.clientX - $(window).width() / 2) / dataNum;
+          let posY = (e.clientY - $(window).height() / 2) / dataNum;
+          $(this).css({
+            transform: `translate(${posX}px, ${posY}px)`
+          })
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div data-num="46">web designer</div>
+  </div>
+  <!-- <div id="wrap">
+  </div>
+  <div class="text">example</div> -->
+</body>
+
+</html>
