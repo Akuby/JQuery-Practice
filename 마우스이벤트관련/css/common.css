@@ -1,0 +1,12 @@
+@charset "utf-8";
+body { /*꼭 바디가 아니어도, 움직이게 할 요소의 상위 요소를 선택*/
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+div {
+  position: absolute;
+  width: 120%;
+  height: 120vh;
+  background: url(../images/bg.jpg) no-repeat center / cover;
+}
