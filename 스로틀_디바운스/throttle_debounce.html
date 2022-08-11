@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스로틀, 디바운스</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(181, 221, 233);
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+  </style>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+  <script>
+    // $('button').on('click', function() {
+    //   $('div').animate({left:'+=50'})
+    // })
+    $(function() {
+      $('button').on('click', _.throttle(function(e) {
+        $('div').animate({left:'+=50'}, 1000)
+      }, 2000))
+    })
+  </script>
+</head>
+<body>
+  <button>이동</button>
+  <br>
+  <br>
+  <div></div>
+</body>
+</html>

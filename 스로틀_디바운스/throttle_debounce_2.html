@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background: #444;
+            color: white;
+            font: 15px/1.51 Helvetica, sans-serif;
+            margin:0 auto;
+            }
+            .left-panel,
+            .center-panel,
+            .right-panel {  
+            padding:1%;
+            margin:0;
+            width:30%;
+            float:left;
+            min-height:100vh;
+            text-align:center;
+            }
+
+            .left-panel {
+            background: #ccc;
+            color:black;
+            }
+            .center-panel {
+            background: rgb(235, 173, 173);
+            color:black;
+            }
+            .right-panel {
+            background: rgb(127, 163, 231);
+            color:black;
+            }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+</head>
+<body>
+    <div class="left-panel">Raw resize events<br></div>
+    <div class="center-panel">throttle events<br></div>
+    <div class="right-panel">Debounced events<br></div>
+    <script>
+        // let $win = $(window);
+        // let $left_panel = $('.left-panel');
+        // let $right_panel = $('.right-panel');
+        
+        // function display_info($div) {
+        //     $div.append($win.width() + ' x ' + $win.height() +  '<br>');
+        // }
+                        
+        // $(window).on('resize', function(){
+        //     display_info($left_panel);
+        // });
+        
+        // $(window).on('resize', _.debounce(300,function(e) {
+        //     display_info($right_panel);
+        // }));
+  
+            var $win = $(window);
+            var $left_panel = $('.left-panel');
+            var $center_panel = $('.center-panel');
+            var $right_panel = $('.right-panel');
+            
+            function display_info($div) {
+                $div.append($win.width() + ' x ' + $win.height() +  '<br>');
+            }
+
+            // 이벤트의 발생횟수만큼 실행                
+            $(window).on('resize', function(){
+                display_info($left_panel);
+            });
+
+            // 지정시간이 지나면 다시 이벤트 호출
+            $(window).on('resize', _.throttle(function() {
+                display_info($center_panel);
+            }, 1000));
+
+            // 이벤트 발생 후 마지막 시점에 실행
+            $(window).on('resize', _.debounce(function() {
+                display_info($right_panel);
+            }, 1000));
+            
+    </script>
+</body>
+</html>

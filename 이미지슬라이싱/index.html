@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 쪼개기</title>
+  <style>
+    body, p {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    #wrap {
+      width: 640px; height: 360px;
+      margin: 200px auto 0; 
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+    #wrap p a {
+      line-height: 360px;
+      font-size: 28px;
+    }
+    #wrap div {
+      position: absolute;
+      left: 0;
+      width: 640px;
+      height: 180px;
+      background: url(./bg.png) no-repeat;
+      transition: 0.3s;
+    }
+    #wrap div.top {
+      top: 0;
+      background-position: top left;
+    }
+    #wrap div.bottom {
+      bottom: 0;
+      background-position: bottom left;
+    }
+    /* #wrap:hover div.top{
+      top: -180px;
+    }
+    #wrap:hover div.bottom {
+      bottom: -180px;
+    } */
+  </style>
+  <script src="../jquery-3.6.0.min.js"></script>
+  <script>
+    $(function() {
+      $('#wrap').append('<div class="top"></div><div class="bottom"></div>')
+      $('#wrap').mouseenter(function() {
+        $(this).children('div.top').animate({top:-180});
+        $(this).children('div.bottom').animate({bottom:-180})
+      }).mouseleave(function() {
+        $(this).children('div.top').animate({top:0});
+        $(this).children('div.bottom').animate({bottom:0})
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <p><a href="#">Lorem Ipsum</a></p>
+    <div class="top"></div>
+    <div class="bottom"></div>
+  </div>
+</body>
+</html>
