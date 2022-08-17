@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>화면크기에 따른 메뉴 롤오버</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    h1 {
+      padding: 20px 0 30px;
+      font-size: 20px;
+    }
+
+    body {
+      text-align: center;
+    }
+
+    #gnb>li>a {
+      display: block;
+    }
+
+    @media screen and (min-width:700px) {
+      #gnb {
+        height: 50px;
+        display: flex;
+        justify-content: space-around;
+        background: pink;
+      }
+      #gnb>li {
+        width: 25%;
+      }
+      #gnb>li>a {
+        height: 50px;
+        line-height: 50px;
+      }
+
+      #gnb>li>ul>li {
+        margin: 20px 0;
+      }
+    }
+
+    @media screen and (max-width:699px) {
+      #gnb {
+        background: rgb(201, 249, 255);
+        line-height: 50px;
+      }
+
+      #gnb>li {
+        display: flex;
+        height: 50px; /*어째선지 pc 화면 스크립트 실행 후에, 그 넓이 값이 mobile 화면에서 .show()시 그대로 전해지는 오류가 있다.*/
+      }
+
+      #gnb>li>a {
+        width: 80px;
+        font-weight: 600;
+      }
+
+      .snb {
+        display: flex;
+      }
+
+      .snb>li {
+        width: 60px;
+      }
+    }
+  </style>
+  <script src="../jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      $('.snb').hide();
+      let navEffect = () => {
+        let mobileEffect = window.matchMedia('screen and (max-width : 699px)')
+        if (mobileEffect.matches) {
+          $('#gnb>li').off();
+          $('#gnb>li').on('mouseenter', function () {
+            $(this).children('.snb').show()
+          }).on('mouseleave', function () {
+            $(this).children('.snb').hide()
+          })
+        } else {
+          $('#gnb>li').off();
+          $('#gnb>li').on('mouseenter', function () {
+            $(this).children('.snb').stop().slideDown()
+          }).on('mouseleave', function () {
+            $(this).children('.snb').stop().slideUp()
+          })
+        }
+      }
+      navEffect();
+      $(window).on('resize', function() {
+        navEffect();
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>화면크기에 따른 이펙트효과 적용하기</h1>
+  <ul id="gnb">
+    <li>
+      <a href="#">메뉴1</a>
+      <ul class="snb">
+        <li><a href="#">메뉴1-1</a></li>
+        <li><a href="#">메뉴1-2</a></li>
+        <li><a href="#">메뉴1-3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">메뉴2</a>
+      <ul class="snb">
+        <li><a href="#">메뉴2-1</a></li>
+        <li><a href="#">메뉴2-2</a></li>
+        <li><a href="#">메뉴2-3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">메뉴3</a>
+      <ul class="snb">
+        <li><a href="#">메뉴3-1</a></li>
+        <li><a href="#">메뉴3-2</a></li>
+        <li><a href="#">메뉴3-3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">메뉴4</a>
+      <ul class="snb">
+        <li><a href="#">메뉴4-1</a></li>
+        <li><a href="#">메뉴4-2</a></li>
+        <li><a href="#">메뉴4-3</a></li>
+      </ul>
+    </li>
+  </ul>
+</body>
+
+</html>
