@@ -1,0 +1,37 @@
+body {
+  background-color: #f2f2f2;
+}
+
+#container {
+  width: 100%;
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.card {
+  width: 320px;
+  height: 480px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 20px;
+  perspective: 500px;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 20px 2px;
+}
+
+.content.onLeave{
+  transition: transform .3s ease;
+}
